@@ -8,8 +8,8 @@ pipeline {
         }
         stage('Linter') {
             steps {
-                  sh 'make linter'
-            }
+                   sh 'make linter'
+              }
         }
         stage('Test') {
             steps {
