@@ -13,6 +13,12 @@ test:
 run:
 		PYTHONPATH=. FLASK_APP=hello_world flask run
 
+test_cov:
+		PYTHONPATH=. py.test --verbose -s --cov=. --cov-report xml
+
+test_xunit:
+		PYTHONPATH=. py.test -s --cov=. --cov-report xml --junit-xml=test_results.xml
+
 docker_build:
 	  docker build -t hello-world-printer .
 
@@ -21,7 +27,7 @@ docker_run: docker_build
 					--name hello-world-printer-dev \
 					 -p 5000:5000 \
 					 -d hello-world-printer
-					 
+
 USERNAME=gabi2801
 TAG=$(USERNAME)/hello-world-printer
 
